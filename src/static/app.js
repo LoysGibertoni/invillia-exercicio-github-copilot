@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const sortedParticipants = details.participants.sort((a, b) => a.localeCompare(b));
         const participantsList = sortedParticipants.length > 0
-          ? `<ol>${sortedParticipants.map(participant => `<li>${participant}</li>`).join("")}</ol>`
+          ? `<ol class="participant-list">${sortedParticipants.map(participant => `<li>${participant}</li>`).join("")}</ol>`
           : "<p>No participants yet</p>";
 
         activityCard.innerHTML = `
