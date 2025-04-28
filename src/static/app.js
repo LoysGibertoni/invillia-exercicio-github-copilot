@@ -20,11 +20,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const spotsLeft = details.max_participants - details.participants.length;
 
+        const sortedParticipants = details.participants.sort((a, b) => a.localeCompare(b));
+        const participantsList = sortedParticipants.length > 0
+          ? `<ol class="participant-list">${sortedParticipants.map(participant => `<li>${participant}</li>`).join("")}</ol>`
+          : "<p>No participants yet</p>";
+
         activityCard.innerHTML = `
           <h4>${name}</h4>
           <p>${details.description}</p>
           <p><strong>Schedule:</strong> ${details.schedule}</p>
           <p><strong>Availability:</strong> ${spotsLeft} spots left</p>
+          <p><strong>Participants:</strong></p>
+          ${participantsList}
         `;
 
         activitiesList.appendChild(activityCard);
